@@ -1,0 +1,20 @@
+specVersion: 0.0.1
+org: zb
+kind: ethereum
+version: 0
+name: demo
+network: holesky
+metadataDB: RDS_TEST_DB
+destinationDB: RDS_TEST_DB
+sourceDB: RDS_TEST_DB
+Initialization:
+  startBlock: 1187561
+  initializationHandlers:
+    - HandleInitialization
+source:
+  schema: "ethereum_holesky"
+eventHandlers:
+  - event: AVSMetadataURIUpdated
+    handler: HandleAVSMetadataURIUpdated
+  - event: OperatorAVSRegistrationStatusUpdated
+    handler: HandleOperatorAVSRegistrationStatusUpdated
