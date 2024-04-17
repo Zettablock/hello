@@ -1,5 +1,5 @@
-github.com/Zettablock/demo2 v0.0.0-20240404225735-b5df83edaa1f h1:ijqS8osKB2DlhzikXR0j+btCUwWpqCnAS029irF+upM=
-github.com/Zettablock/demo2 v0.0.0-20240404225735-b5df83edaa1f/go.mod h1:Z1YQdzvVEb3gXejqAEXqLeGDULQbWLBe/Yfzc5N109c=
+github.com/Zettablock/zsource v0.0.0-20240417002051-23faf3fda33c h1:rTQm+6BpAzVGMpE/JR94a6HaJ0jNWLJUpN1/tXscmkU=
+github.com/Zettablock/zsource v0.0.0-20240417002051-23faf3fda33c/go.mod h1:G0kh1XVWLxzVNPwIjLFrMrn3awgZyDc8oKwiB2C7eeA=
 github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
