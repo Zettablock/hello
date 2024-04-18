@@ -17,12 +17,19 @@ func HandleInitialization(deps *utils.Deps) error {
 	return nil
 }
 
-func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) error {
+func HandleBlock(blockNumber int, deps *utils.Deps) (bool, error) {
+	//shouldRetry tells zrunner where to retry on errors
+	shouldRetry := false
+	return shouldRetry, nil
+}
+
+func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
+	shouldRetry := false
 	var avs m.Avs
 	deps.DestinationDB.FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[0]})
 	deps.Logger.Info("Got AVS:", avs)
 	avs.MetadataUri = log.ArgumentValues[1]
-	return deps.DestinationDB.Save(avs).Error
+	return shouldRetry, deps.DestinationDB.Save(avs).Error
 
 }
 
@@ -36,7 +43,8 @@ func mapRegistrationStatus(status int) string {
 	}
 }
 
-func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.Deps) error {
+func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
+	shouldRetry := false
 	avsOperatorID := log.ArgumentValues[1] + "-" + log.ArgumentValues[0]
 	var avsOperator *m.AvsOperator
 	deps.DestinationDB.Where("ID = ?", avsOperatorID).First(avsOperator)
@@ -44,7 +52,7 @@ func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.De
 		var avs m.Avs
 		deps.DestinationDB.FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[1]})
 		n, _ := strconv.Atoi(log.ArgumentValues[2])
-		return deps.DestinationDB.Save(&m.AvsOperator{
+		return shouldRetry, deps.DestinationDB.Save(&m.AvsOperator{
 			ID:                 log.ArgumentValues[1] + "-" + log.ArgumentValues[0],
 			Avs:                avs.ID,
 			Operator:           log.ArgumentValues[0],
@@ -53,5 +61,5 @@ func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.De
 	}
 	n, _ := strconv.Atoi(log.ArgumentValues[2])
 	avsOperator.RegistrationStatus = mapRegistrationStatus(n)
-	return deps.DestinationDB.Save(avsOperator).Error
+	return shouldRetry, deps.DestinationDB.Save(avsOperator).Error
 }
