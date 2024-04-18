@@ -19,5 +19,4 @@ eventHandlers: # multiple handlers
   - event: OperatorAVSRegistrationStatusUpdated
     handler: HandleOperatorAVSRegistrationStatusUpdated
 blockHandlers:
-  - name: HandleBlock
-    handler: HandleBlock
+  - handler: HandleBlock
