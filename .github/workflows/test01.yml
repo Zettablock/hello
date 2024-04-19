@@ -1,4 +1,4 @@
-name: workflow_01
+name: zrunner trigger workflow
 
 on:
   push:
