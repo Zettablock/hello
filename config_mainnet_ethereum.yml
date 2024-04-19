@@ -1,0 +1,20 @@
+specVersion: 0.0.1 # not used for now
+org: zb # required, usually this should be company name without space.
+kind: ethereum
+version: 0 # not used for now
+name: demo_mainnet_etheruem # required
+network: mainnet
+metadataDB: RDS_TEST_DB
+destinationDB: RDS_TEST_DB
+sourceDB: RDS_PROD_DB
+Initialization:
+  startBlock: 19687700
+  initializationHandlers: # used to initialize pg, which can be done manually too
+    - HandleInitialization
+source:
+  schema: "ethereum_mainnet"
+eventHandlers: # multiple handlers
+  - event: AVSMetadataURIUpdated
+    handler: HandleAVSMetadataURIUpdated
+  - event: OperatorAVSRegistrationStatusUpdated
+    handler: HandleOperatorAVSRegistrationStatusUpdated
