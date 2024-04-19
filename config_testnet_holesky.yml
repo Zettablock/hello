@@ -1,5 +1,5 @@
 specVersion: 0.0.1 # not used for now
-org: eigenlabs # required, usually this should be company name without space.
+org: zb # required, usually this should be company name without space.
 kind: ethereum
 version: 0 # not used for now
 name: demo_testnet_holesky # required
