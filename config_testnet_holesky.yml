@@ -8,7 +8,7 @@ metadataDB: RDS_TEST_DB
 destinationDB: RDS_TEST_DB
 sourceDB: RDS_TEST_DB
 Initialization:
-  startBlock:
+  startBlock: 1187551
   initializationHandlers: # used to initialize pg, which can be done manually too
     - HandleInitialization
 source:
