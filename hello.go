@@ -17,12 +17,6 @@ func HandleInitialization(deps *utils.Deps) error {
 	return nil
 }
 
-func HandleBlock(blockNumber string, deps *utils.Deps) (bool, error) {
-	//shouldRetry tells zrunner where to retry on errors
-	shouldRetry := false
-	return shouldRetry, nil
-}
-
 func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	shouldRetry := false
 	var avs m.Avs
