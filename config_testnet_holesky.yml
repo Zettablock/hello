@@ -1,0 +1,20 @@
+specVersion: 0.0.1 # not used for now
+org: eigenlabs # required, usually this should be company name without space.
+kind: ethereum
+version: 0 # not used for now
+name: demo_testnet_holesky # required
+network: holesky
+metadataDB: RDS_TEST_DB
+destinationDB: RDS_TEST_DB
+sourceDB: RDS_TEST_DB
+Initialization:
+  startBlock:
+  initializationHandlers: # used to initialize pg, which can be done manually too
+    - HandleInitialization
+source:
+  schema: "ethereum_holesky"
+eventHandlers: # multiple handlers
+  - event: AVSMetadataURIUpdated
+    handler: HandleAVSMetadataURIUpdated
+  - event: OperatorAVSRegistrationStatusUpdated
+    handler: HandleOperatorAVSRegistrationStatusUpdated
