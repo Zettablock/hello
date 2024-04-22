@@ -9,7 +9,7 @@ initialization:
     - HandleInitialization
 source:
   schema: "ethereum_holesky"
-  sourceDB: RDS_TEST_DB
+  sourceDB: RDS_PROD_DB
   startBlock: 1187561
 metadata:
   metadataDB: RDS_TEST_DB
