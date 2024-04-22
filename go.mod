@@ -3,7 +3,7 @@ module example/user/hello
 go 1.19
 
 require (
-	github.com/Zettablock/zsource v0.0.0-20240422220356-a9fbf0aad1f9
+	github.com/Zettablock/zsource v0.0.0-20240422220905-1cae560665e7
 	github.com/lib/pq v1.10.9
 )
 

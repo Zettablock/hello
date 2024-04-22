@@ -10,10 +10,10 @@ import (
 func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	shouldRetry := false
 	var avs m.Avs
-	deps.DestinationDB.Table(deps.DestinationSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[0]})
+	deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[0]})
 	deps.Logger.Info("Got AVS:", avs)
 	avs.MetadataUri = log.ArgumentValues[1]
-	return shouldRetry, deps.DestinationDB.Table(deps.DestinationSchema + ".avs").Save(avs).Error
+	return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs").Save(avs).Error
 
 }
 
@@ -31,12 +31,12 @@ func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.De
 	shouldRetry := false
 	avsOperatorID := log.ArgumentValues[1] + "-" + log.ArgumentValues[0]
 	var avsOperator *m.AvsOperator
-	deps.DestinationDB.Table(deps.DestinationSchema+".avs_operator").Where("ID = ?", avsOperatorID).First(avsOperator)
+	deps.DestinationDB.Table(deps.DestinationDBSchema+".avs_operator").Where("ID = ?", avsOperatorID).First(avsOperator)
 	if avsOperator == nil {
 		var avs m.Avs
-		deps.DestinationDB.Table(deps.DestinationSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[1]})
+		deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[1]})
 		n, _ := strconv.Atoi(log.ArgumentValues[2])
-		return shouldRetry, deps.DestinationDB.Table(deps.DestinationSchema + ".avs_operator").Save(&m.AvsOperator{
+		return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(&m.AvsOperator{
 			ID:                 log.ArgumentValues[1] + "-" + log.ArgumentValues[0],
 			Avs:                avs.ID,
 			Operator:           log.ArgumentValues[0],
@@ -45,5 +45,5 @@ func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.De
 	}
 	n, _ := strconv.Atoi(log.ArgumentValues[2])
 	avsOperator.RegistrationStatus = mapRegistrationStatus(n)
-	return shouldRetry, deps.DestinationDB.Table(deps.DestinationSchema + ".avs_operator").Save(avsOperator).Error
+	return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(avsOperator).Error
 }
