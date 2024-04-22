@@ -4,15 +4,18 @@ kind: ethereum
 version: 0 # not used for now
 name: demo # required
 network: holesky
-metadataDB: RDS_TEST_DB
-destinationDB: RDS_TEST_DB
-sourceDB: RDS_TEST_DB
-Initialization:
-  startBlock: 1187561
+initialization:
   initializationHandlers: # used to initialize pg, which can be done manually too
     - HandleInitialization
 source:
   schema: "ethereum_holesky"
+  sourceDB: RDS_TEST_DB
+  startBlock: 1187561
+metadata:
+  metadataDB: RDS_TEST_DB
+destination:
+  destinationDB: RDS_TEST_DB
+  schema: public
 eventHandlers: # multiple handlers
   - event: AVSMetadataURIUpdated
     handler: HandleAVSMetadataURIUpdated
