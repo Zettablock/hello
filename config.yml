@@ -11,6 +11,8 @@ source:
   schema: "ethereum_holesky"
   sourceDB: RDS_PROD_DB
   startBlock: 1187561
+  addresses:
+    - "0x141d6995556135D4997b2ff72EB443Be300353bC"
 metadata:
   metadataDB: RDS_TEST_DB
 destination:
