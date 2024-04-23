@@ -2,7 +2,7 @@ specVersion: 0.0.1 # not used for now
 org: zb # required, usually this should be company name without space.
 kind: ethereum
 version: 0 # not used for now
-#name: demo # required
+name: demo # required
 network: holesky
 initialization:
   initializationHandlers: # used to initialize pg, which can be done manually too
