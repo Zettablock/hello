@@ -7,6 +7,9 @@ import (
 	"strconv"
 )
 
+// HandleAVSMetadataURIUpdated : shouldRetry tell zrunner whether to retry on errors
+// *utils.Deps contains *gorm.DB which can be used for CRUD
+// *utils.Deps also contains Logger
 func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	shouldRetry := false
 	var avs m.Avs
@@ -27,6 +30,9 @@ func mapRegistrationStatus(status int) string {
 	}
 }
 
+// HandleOperatorAVSRegistrationStatusUpdated : shouldRetry tell zrunner whether to retry on errors
+// *utils.Deps contains *gorm.DB which can be used for CRUD
+// *utils.Deps also contains Logger
 func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	shouldRetry := false
 	avsOperatorID := log.ArgumentValues[1] + "-" + log.ArgumentValues[0]

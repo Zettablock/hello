@@ -1,23 +1,29 @@
 specVersion: 0.0.1 # not used for now
-org: zb # required, usually this should be company name without space.
-kind: ethereum
+# required, usually this should be company name without space.
+# if metadata.schema not provided, this will be used as metadata db schema
+org: eigenlabs # no space and specifia char allowed
+kind: ethereum # chain name
+network: holesky # chain network
 version: 0 # not used for now
-name: demo # required
-network: holesky
+name: demo_testnet_holesky # required, not space or specical chars allowed
 initialization:
-  initializationHandlers: # used to initialize pg, which can be done manually too
+  # Make sure initializationHandlers called in only one yml file to avoid unnecessary race condition.
+  # initializationHandlers are supposed to initialize pg, which can be done manually too.
+  # we prefer to create tables/schemas manually for now
+  initializationHandlers:
     - HandleInitialization
 source:
   schema: "ethereum_holesky"
-  sourceDB: RDS_PROD_DB
-  startBlock: 1187561
+  sourceDB: RDS_PROD_DB # in staging and prod, we can use prod db with read-only user
+  startBlock: 1167044
   addresses:
-    - "0x141d6995556135D4997b2ff72EB443Be300353bC"
+    - "0x055733000064333CaDDbC92763c58BF0192fFeBf" # testnet holesky AVS-Directory contract
 metadata:
   metadataDB: RDS_TEST_DB
+  schema: public
 destination:
   destinationDB: RDS_TEST_DB
-  schema: public
+  schema: "eigenlabs_testnet_holesky" # schema name for destination
 eventHandlers: # multiple handlers
   - event: AVSMetadataURIUpdated
     handler: HandleAVSMetadataURIUpdated
