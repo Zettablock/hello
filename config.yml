@@ -1,17 +1,11 @@
 specVersion: 0.0.1 # not used for now
 # required, usually this should be company name without space.
 # if metadata.schema not provided, this will be used as metadata db schema
-org: eigenlabs # no space and specifia char allowed
+org: zb # no space and specifia char allowed
 kind: ethereum # chain name
 network: holesky # chain network
 version: 0 # not used for now
 name: demo_testnet_holesky # required, not space or specical chars allowed
-initialization:
-  # Make sure initializationHandlers called in only one yml file to avoid unnecessary race condition.
-  # initializationHandlers are supposed to initialize pg, which can be done manually too.
-  # we prefer to create tables/schemas manually for now
-  initializationHandlers:
-    - HandleInitialization
 source:
   schema: "ethereum_holesky"
   sourceDB: RDS_PROD_DB # in staging and prod, we can use prod db with read-only user
