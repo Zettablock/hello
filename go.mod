@@ -1,6 +1,6 @@
 module example/user/hello
 
-go 1.19
+go 1.21
 
 require (
 	github.com/Zettablock/zsource v0.0.0-20240422220905-1cae560665e7
