@@ -14,10 +14,10 @@ source:
     - "0x055733000064333CaDDbC92763c58BF0192fFeBf" # testnet holesky AVS-Directory contract
 metadata:
   metadataDB: RDS_TEST_DB
-  schema: public
+  schema: zb
 destination:
   destinationDB: RDS_TEST_DB
-  schema: "eigenlabs_testnet_holesky" # schema name for destination
+  schema: zb
 eventHandlers: # multiple handlers
   - event: AVSMetadataURIUpdated
     handler: HandleAVSMetadataURIUpdated
