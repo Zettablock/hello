@@ -23,6 +23,3 @@ eventHandlers: # multiple handlers
     handler: HandleAVSMetadataURIUpdated
   - event: OperatorAVSRegistrationStatusUpdated
     handler: HandleOperatorAVSRegistrationStatusUpdated
-blockHandlers:
-  - handler: HandleBlock
-  - handler: HandleBlock2
