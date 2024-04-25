@@ -1,18 +1,23 @@
 # Example of pipelines to run in zrunner, which is Zettablock FaaS platform to stream onchain data
 
-Some explanations:
+## Some explanations:
 
 1, one yml file define one pipeline, which has source, destination, metadata, handlers information
 
-2, Multiple go files are built into one golang plugin file.
+2, in the repo base directory, we can have multiple project directories to hold go/yml files separately. Some go files can be in the repo base directory, so they can be shared by all project directories.
 
-So all handlers should have different names. The best practice of naming is Handler<Event name>, HandleBlock, etc
+3, Multiple go files (in one directory) are built into one golang plugin file. During building customer repo into golang plugins, we copy the go files in the repo base directory into all project directories.
 
-event handlers and block handlers can be in separate files.
+So all handlers (which are built into one plugin) should have different names. The best practice of naming is Handler<Event name>, HandleBlock, etc
 
-3, All handlers which have the same source and destination can be in one pipeline.
+4, event handlers and block handlers can be in separate files.
 
-4, dao folder contains DAO to access destination tables.
+5, All handlers which have the same source and destination can be in one pipeline.
+
+6, dao folder contains DAO to access destination tables.
+
+7, pipeline names should be unique.
+
 
 
 
