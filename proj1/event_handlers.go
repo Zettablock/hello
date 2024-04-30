@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	m "example/user/hello/dao"
 	"github.com/Zettablock/zsource/dao/ethereum"
 	"github.com/Zettablock/zsource/utils"
@@ -11,13 +12,17 @@ import (
 // *utils.Deps contains *gorm.DB which can be used for CRUD
 // *utils.Deps also contains Logger
 func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
-	shouldRetry := false
-	var avs m.Avs
-	deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[0]})
-	deps.Logger.Info("Got AVS:", avs)
-	avs.MetadataUri = log.ArgumentValues[1]
-	return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs").Save(avs).Error
+	//shouldRetry := false
+	//var avs m.Avs
+	//deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[0]})
+	//deps.Logger.Info("Got AVS:", avs)
+	//avs.MetadataUri = log.ArgumentValues[1]
+	//return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs").Save(avs).Error
 
+	if log.BlockNumber%100 == 0 {
+		return true, errors.New("fake error to test")
+	}
+	return false, nil
 }
 
 func mapRegistrationStatus(status int) string {
