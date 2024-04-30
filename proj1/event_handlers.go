@@ -18,7 +18,7 @@ func HandleAVSMetadataURIUpdated(log ethereum.Log, deps *utils.Deps) (bool, erro
 	//deps.Logger.Info("Got AVS:", avs)
 	//avs.MetadataUri = log.ArgumentValues[1]
 	//return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs").Save(avs).Error
-
+	deps.Logger.Info("HandleAVSMetadataURIUpdated called in proj1")
 	if log.BlockNumber%10 == 0 {
 		return true, errors.New("fake error to test")
 	}
