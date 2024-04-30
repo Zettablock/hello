@@ -21,5 +21,6 @@ destination:
 eventHandlers: # multiple handlers
   - event: AVSMetadataURIUpdated
     handler: HandleAVSMetadataURIUpdated
-#  - event: OperatorAVSRegistrationStatusUpdated
-#    handler: HandleOperatorAVSRegistrationStatusUpdated
+blockHandlers:
+  - handler: HandleBlock
+  - handler: HandleBlock2
