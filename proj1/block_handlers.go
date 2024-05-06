@@ -11,7 +11,7 @@ import (
 func HandleBlock(blockNumber string, deps *utils.Deps) (bool, error) {
 	deps.Logger.Info("Proj1 HandleBlock1", "block number", blockNumber)
 	//shouldRetry tells zrunner where to retry on errors
-	panic("test..............")
+	//panic("test..............")
 	shouldRetry := false
 	return shouldRetry, nil
 }
