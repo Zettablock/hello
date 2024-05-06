@@ -25,4 +25,4 @@ eventHandlers: # multiple handlers
     handler: HandleOperatorAVSRegistrationStatusUpdated
 blockHandlers:
   - handler: HandleBlock
-  - handler: HandleBlock2
+#  - handler: HandleBlock2

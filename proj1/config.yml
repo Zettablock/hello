@@ -18,9 +18,9 @@ metadata:
 destination:
   destinationDB: RDS_TEST_DB
   schema: "zb" # schema name for destination
-eventHandlers: # multiple handlers
-  - event: AVSMetadataURIUpdated
-    handler: HandleAVSMetadataURIUpdated
+#eventHandlers: # multiple handlers
+#  - event: AVSMetadataURIUpdated
+#    handler: HandleAVSMetadataURIUpdated
 blockHandlers:
   - handler: HandleBlock
-  - handler: HandleBlock2
+#  - handler: HandleBlock2
