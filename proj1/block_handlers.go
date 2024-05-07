@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/Zettablock/zsource/utils"
+	"time"
 )
 
 // HandleBlock : shouldRetry tell zrunner whether to retry on errors
@@ -12,6 +13,7 @@ func HandleBlock(blockNumber string, deps *utils.Deps) (bool, error) {
 	deps.Logger.Info("Proj1 HandleBlock1", "block number", blockNumber)
 	//shouldRetry tells zrunner where to retry on errors
 	//panic("test..............")
+	time.Sleep(30 * time.Second)
 	shouldRetry := false
 	return shouldRetry, nil
 }
