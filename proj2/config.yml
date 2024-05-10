@@ -8,7 +8,7 @@ version: 0 # not used for now
 name: demo_testnet_holesky # required, not space or specical chars allowed
 source:
   schema: "ethereum_holesky"
-  sourceDB: RDS_PROD_DB # in staging and prod, we can use prod db with read-only user
+  sourceDB: SELF_HOSTED_PROD_DB # in staging and prod, we can use prod db with read-only user
   startBlock: 1167044
   addresses:
     - "0x055733000064333CaDDbC92763c58BF0192fFeBf" # testnet holesky AVS-Directory contract
