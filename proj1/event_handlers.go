@@ -2,10 +2,8 @@ package main
 
 import (
 	"errors"
-	m "example/user/hello/dao"
 	"github.com/Zettablock/zsource/dao/ethereum"
 	"github.com/Zettablock/zsource/utils"
-	"strconv"
 )
 
 // HandleAVSMetadataURIUpdated : shouldRetry tell zrunner whether to retry on errors
@@ -37,21 +35,22 @@ func mapRegistrationStatus(status int) string {
 // *utils.Deps also contains Logger
 func HandleOperatorAVSRegistrationStatusUpdated(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	shouldRetry := false
-	avsOperatorID := log.ArgumentValues[1] + "-" + log.ArgumentValues[0]
-	var avsOperator *m.AvsOperator
-	deps.DestinationDB.Table(deps.DestinationDBSchema+".avs_operator").Where("ID = ?", avsOperatorID).First(avsOperator)
-	if avsOperator == nil {
-		var avs m.Avs
-		deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[1]})
-		n, _ := strconv.Atoi(log.ArgumentValues[2])
-		return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(&m.AvsOperator{
-			ID:                 log.ArgumentValues[1] + "-" + log.ArgumentValues[0],
-			Avs:                avs.ID,
-			Operator:           log.ArgumentValues[0],
-			RegistrationStatus: mapRegistrationStatus(n),
-		}).Error
-	}
-	n, _ := strconv.Atoi(log.ArgumentValues[2])
-	avsOperator.RegistrationStatus = mapRegistrationStatus(n)
-	return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(avsOperator).Error
+	//avsOperatorID := log.ArgumentValues[1] + "-" + log.ArgumentValues[0]
+	//var avsOperator *m.AvsOperator
+	//deps.DestinationDB.Table(deps.DestinationDBSchema+".avs_operator").Where("ID = ?", avsOperatorID).First(avsOperator)
+	//if avsOperator == nil {
+	//	var avs m.Avs
+	//	deps.DestinationDB.Table(deps.DestinationDBSchema+".avs").FirstOrCreate(&avs, m.Avs{ID: log.ArgumentValues[1]})
+	//	n, _ := strconv.Atoi(log.ArgumentValues[2])
+	//	return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(&m.AvsOperator{
+	//		ID:                 log.ArgumentValues[1] + "-" + log.ArgumentValues[0],
+	//		Avs:                avs.ID,
+	//		Operator:           log.ArgumentValues[0],
+	//		RegistrationStatus: mapRegistrationStatus(n),
+	//	}).Error
+	//}
+	//n, _ := strconv.Atoi(log.ArgumentValues[2])
+	//avsOperator.RegistrationStatus = mapRegistrationStatus(n)
+	//return shouldRetry, deps.DestinationDB.Table(deps.DestinationDBSchema + ".avs_operator").Save(avsOperator).Error
+	return shouldRetry, nil
 }
