@@ -14,7 +14,7 @@ source:
   ethereumRPC: "https://compatible-warmhearted-bush.quiknode.pro/5369067912a20632dde6c49f09e0ded66a95fd70/"
   addresses:
     - "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" # wrapped ether contract
-  abiFile: WrappedEther.json
+  abiFile: plugins_hello/proj3/WrappedEther.json
 metadata:
   metadataDB: RDS_TEST_DB
   schema: zb
