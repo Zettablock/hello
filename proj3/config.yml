@@ -1,0 +1,26 @@
+specVersion: 0.0.1 # not used for now
+# required, usually this should be company name without space.
+# if metadata.schema not provided, this will be used as metadata db schema
+org: zb # no space and specifia char allowed
+kind: ethereum # chain name
+network: mainnet # chain network
+version: 0 # not used for now
+name: proj3_rpc_test # required, not space or specical chars allowed
+source:
+  type: rpc
+  schema: "ethereum_mainnet"
+  sourceDB: PG_EVM_PROD # in staging and prod, we can use prod db with read-only user
+  startBlock: 20181910
+  ethereumRPC: "https://compatible-warmhearted-bush.quiknode.pro/5369067912a20632dde6c49f09e0ded66a95fd70/"
+  addresses:
+    - "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" # wrapped ether contract
+  abiFile: plugins_hello/proj3/WrappedEther.json
+metadata:
+  metadataDB: RDS_TEST_DB
+  schema: zb
+destination:
+  destinationDB: RDS_TEST_DB
+  schema: zb
+eventHandlers: # multiple handlers
+  - event: Transfer
+    handler: HandleTransfer
