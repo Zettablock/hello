@@ -10,7 +10,7 @@ import (
 
 func HandleTransfer(log ethereum.Log, deps *utils.Deps) (bool, error) {
 	deps.Logger.Info("HandleTransfer", "block number", log.BlockNumber, "pipeline_name", deps.Config.GetPipelineName())
-	fmt.Println("HandleTransfer called in proj3")
+	fmt.Println("HandleTransfer called in proj4")
 	fmt.Println("log", log)
 	fmt.Println("block number", log.BlockNumber)
 	fmt.Println("log index", log.LogIndex)

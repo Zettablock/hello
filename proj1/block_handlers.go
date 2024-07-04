@@ -2,8 +2,9 @@ package main
 
 import (
 	"errors"
-	"github.com/Zettablock/zsource/utils"
 	"time"
+
+	"github.com/Zettablock/zsource/utils"
 )
 
 // HandleBlock : shouldRetry tell zrunner whether to retry on errors
