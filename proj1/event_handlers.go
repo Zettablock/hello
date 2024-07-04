@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+
 	"github.com/Zettablock/zsource/dao/ethereum"
 	"github.com/Zettablock/zsource/utils"
 )
